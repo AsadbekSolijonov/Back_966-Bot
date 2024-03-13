@@ -6,6 +6,9 @@ import datetime
 
 from keyboards.default.keyboard import contact_location
 from loader import dp
+from utils.db_api.db import UsersFunctionality
+
+users = UsersFunctionality()
 
 
 @dp.message_handler(CommandStart())
@@ -25,3 +28,4 @@ async def bot_start(message: types.Message):
                   f"Message length: {message.entities[0].length}")
 
     await message.answer(f"{pretty_txt}", reply_markup=contact_location())
+    users.insert_into(chat_id=message.chat.id)
