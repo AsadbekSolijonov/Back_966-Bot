@@ -9,6 +9,9 @@ from loader import dp
 from aiogram import types
 
 from states.register import RegisterState
+from utils.db_api.db import UsersFunctionality
+
+users = UsersFunctionality()
 
 
 # Username Handler State
@@ -47,6 +50,7 @@ async def phone_register(message: types.Message, state: FSMContext):
 # Handler Address State
 @dp.message_handler(content_types=types.ContentTypes.TEXT, state=RegisterState.address)
 async def address_register(message: types.Message, state: FSMContext):
+    chat_id = message.chat.id
     address = message.text.title()
     await message.answer(f"<b>{address}</b> qabul qilindi!")
     # FSMContext dan oq'ish
@@ -54,5 +58,5 @@ async def address_register(message: types.Message, state: FSMContext):
         username = storage['username']
         phone = storage['phone']
     # datas saved to database
-
+    users.update_user(chat_id=chat_id, username=username, phone=phone, address=address)
     await state.finish()

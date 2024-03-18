@@ -1,3 +1,4 @@
+import logging
 import sqlite3
 
 
@@ -49,8 +50,14 @@ class UsersFunctionality(CreateUsers):
         with self.conn:
             self.curr.execute(query)
 
+    def update_user(self, chat_id, username, phone, address):
+        query = f"""
+        UPDATE users SET username = '{username}', phone={phone}, address='{address}' WHERE chat_id={chat_id};"""
+
+        with self.conn:
+            self.curr.execute(query)
+        logging.info(f'Foydalanuvchi <{chat_id}> ma`lumoti yangilandi!')
+
 
 if __name__ == "__main__":
     CreateUsers()
-
-
