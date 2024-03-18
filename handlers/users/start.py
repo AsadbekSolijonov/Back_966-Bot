@@ -4,7 +4,6 @@ from aiogram import types
 from aiogram.dispatcher.filters.builtin import CommandStart
 import datetime
 
-from keyboards.default.keyboard import contact_location
 from loader import dp
 from states.register import RegisterState
 from utils.db_api.db import UsersFunctionality
@@ -33,7 +32,7 @@ async def bot_start(message: types.Message):
                   "<b>Ismingizni kiriting: </b>\n"
                   "<i>Malasan: <strike>Asadbek Solijonov</strike></i>")
 
-    await message.answer(f"{pretty_txt}", reply_markup=contact_location())
+    await message.answer(f"{pretty_txt}")
     try:
         users.insert_into(chat_id=message.chat.id)
     except Exception as e:

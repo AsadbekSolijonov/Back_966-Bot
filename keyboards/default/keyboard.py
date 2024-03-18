@@ -1,12 +1,10 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 
 
-def contact_location():
+def contact_keyboard():
     key = ReplyKeyboardMarkup(resize_keyboard=True)
-    begin = KeyboardButton('start')
-    contact = KeyboardButton('Share Contact', request_contact=True)
-    location = KeyboardButton('Share Location', request_location=True)
-    key.add(begin, contact, location)
+    contact_btn = KeyboardButton('Share Contact', request_contact=True)
+    key.add(contact_btn)
     return key
 
 
