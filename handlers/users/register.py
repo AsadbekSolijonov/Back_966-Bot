@@ -2,8 +2,6 @@ import logging
 import re
 
 from aiogram.dispatcher import FSMContext
-from aiogram.dispatcher.filters import state
-
 from keyboards.default.keyboard import contact_keyboard
 from loader import dp
 from aiogram import types

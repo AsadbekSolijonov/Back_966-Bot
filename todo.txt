@@ -1,0 +1,24 @@
+1. logging
+    - bu modulda yozilgan kodlar xato yoki to'g'ri ogohlantirishlarini ko'rsatib turadi,
+    print() funksiyasidan ham kuchli hissobalanadi.
+2. regex
+    - regex bu murakkab yoki oddiy ko'rishnishdagi ma'lumotlarni tog'ri filtirlash uchun
+    ishlatiladi.
+3. FSMContext
+    - bu state holatida ma'lumotlarni vaqtincha state tugaguncha o'zida saqlab turuvchi ma'lumotlar
+    ba'zasi hissoblandi.
+4. State
+    - bu ma'lum bir ketma-ketlikni tartiblashtirib beruvchi sinflar jamoasi hissoblanadi.
+5. Keyboards
+    - Keyboards ikki xil bo'ladi, InlineKeyboard va Default keyboard.
+    1. InlineKeyboards - Habar ostida osilib turuvchi tugmalar
+    2. Default Keyboard - Bastki habar kirish qismiga qotirib qo'yilgan tugma hissoblanadi.
+6. Token
+    - Serverdan ma'lumot olishga ruxsat beruvchi kalit hissoblnadi.
+    (Shaxsni tasdiqlovchi passport ga o'xshatish mumkin.)
+7. environs
+    - bu yashirin fayldagi maxshiy yoki shaxsiy ma'lumotlarni yashirish va o'qishga yordam
+    beruvchi modul hissoblanadi.
+8. requirements.txt
+    - Loyiha yaratish uchun qanday kutubxonalar o'rnatish kerakligini sizga bilib beradi
+    yoki eslatib turadi.

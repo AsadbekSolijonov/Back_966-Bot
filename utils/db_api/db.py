@@ -58,6 +58,13 @@ class UsersFunctionality(CreateUsers):
             self.curr.execute(query)
         logging.info(f'Foydalanuvchi <{chat_id}> ma`lumoti yangilandi!')
 
+    def get_all(self, chat_id):
+        query = f"""
+        SELECT * FROM users WHERE chat_id={chat_id}
+        """
+        datas = self.curr.execute(query).fetchone()
+        return [] if not datas else datas
+
 
 if __name__ == "__main__":
     CreateUsers()

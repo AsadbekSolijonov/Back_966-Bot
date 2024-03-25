@@ -13,6 +13,7 @@ users = UsersFunctionality()
 
 @dp.message_handler(CommandStart())
 async def bot_start(message: types.Message):
+    chat_id = message.chat.id
     await message.answer(f"Salom, {message.from_user.full_name}")
     logging.info(message.date)
     # pretty_txt = (f"<b>Your CHAT ID:</b> {message.chat.id}\n"
@@ -32,10 +33,15 @@ async def bot_start(message: types.Message):
                   "<b>Ismingizni kiriting: </b>\n"
                   "<i>Malasan: <strike>Asadbek Solijonov</strike></i>")
 
-    await message.answer(f"{pretty_txt}")
-    try:
-        users.insert_into(chat_id=message.chat.id)
-    except Exception as e:
-        logging.warning(f'{e}')
-    # Username State start
-    await RegisterState.username.set()
+    data_len = len(users.get_all(chat_id=chat_id))
+
+    if data_len == 4:
+        await message.answer('Siz ro`yxatda borsiz!')
+    else:
+        await message.answer(f"{pretty_txt}")
+        try:
+            users.insert_into(chat_id=message.chat.id)
+        except Exception as e:
+            logging.warning(f'{e}')
+        # Username State start
+        await RegisterState.username.set()
