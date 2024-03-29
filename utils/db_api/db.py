@@ -29,6 +29,7 @@ class CreateUsers(DBConnection):
         username TEXT,
         phone INT,
         address varchar(50),
+        language TEXT,
         PRIMARY KEY (chat_id));
         """
         with self.conn:
@@ -62,8 +63,26 @@ class UsersFunctionality(CreateUsers):
         query = f"""
         SELECT * FROM users WHERE chat_id={chat_id}
         """
+
         datas = self.curr.execute(query).fetchone()
         return [] if not datas else datas
+
+    def get_followers_count(self):
+        query = """SELECT count(*) FROM users"""
+        followers = self.curr.execute(query).fetchone()[0]
+        return followers
+
+    def get_followers(self):
+        query = """
+        SELECT * FROM users;"""
+        datas = self.curr.execute(query).fetchall()
+        return datas
+
+    def del_user(self, chat_id):
+        query = f"""
+        DELETE FROM users WHERE chat_id={chat_id}"""
+        with self.conn:
+            self.curr.execute(query)
 
 
 if __name__ == "__main__":

@@ -58,3 +58,4 @@ async def address_register(message: types.Message, state: FSMContext):
     # datas saved to database
     users.update_user(chat_id=chat_id, username=username, phone=phone, address=address)
     await state.finish()
+    await message.answer(f"Siz ro'yxatdan muvaffaqqiyatli o`tdingiz!")

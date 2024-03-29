@@ -5,4 +5,5 @@ from . import location
 from . import show_id
 from . import handler_document
 from . import register
+from . import subscribe
 from . import echo
