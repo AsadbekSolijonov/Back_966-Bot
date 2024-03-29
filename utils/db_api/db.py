@@ -59,6 +59,14 @@ class UsersFunctionality(CreateUsers):
             self.curr.execute(query)
         logging.info(f'Foydalanuvchi <{chat_id}> ma`lumoti yangilandi!')
 
+    def update_language(self, chat_id, language):
+        query = f"""
+        UPDATE users  SET language='{language}' WHERE chat_id={chat_id};
+        """
+        with self.conn:
+            self.curr.execute(query)
+        logging.info(f'Foydalanuvchi <{chat_id}> ma`lumoti yangilandi!')
+
     def get_all(self, chat_id):
         query = f"""
         SELECT * FROM users WHERE chat_id={chat_id}
@@ -83,6 +91,13 @@ class UsersFunctionality(CreateUsers):
         DELETE FROM users WHERE chat_id={chat_id}"""
         with self.conn:
             self.curr.execute(query)
+
+    def get_language(self, chat_id):
+        query = f"""
+        SELECT language FROM users WHERE chat_id={chat_id}"""
+        data = self.curr.execute(query).fetchone()
+
+        return data[0] if data else None
 
 
 if __name__ == "__main__":

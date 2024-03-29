@@ -29,7 +29,7 @@ async def username_register(message: types.Message, state: FSMContext):
         await message.answer('Iltimos telefon raqamingizni yuboring:', reply_markup=contact_keyboard())
     else:
         await message.answer('Ism xato!\nIltimos qayta <b>ism</b> kiriting')
-        return username_register(message)
+        return username_register(message, state)
 
 
 # Handler Phone State

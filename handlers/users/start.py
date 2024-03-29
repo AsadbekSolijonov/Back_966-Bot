@@ -7,6 +7,7 @@ import datetime
 from loader import dp
 from states.register import RegisterState
 from utils.db_api.db import UsersFunctionality
+from keyboards.inline.keyboard import languages
 
 users = UsersFunctionality()
 
@@ -28,6 +29,14 @@ async def bot_start(message: types.Message):
     #               f"<pre><code class='language-python'>Message type: {message.entities[0].type}</code></pre>\n"
     #               f"Message length: {message.entities[0].length}")
 
+    await message.answer('Tilni tanlang: ', reply_markup=languages)
+
+
+@dp.callback_query_handler(text=['uz', 'ru', 'en'])
+async def register_lang(call: types.CallbackQuery):
+    chat_id = call.message.chat.id
+    users.update_language(chat_id=chat_id, language=call.data)
+
     pretty_txt = ("Botni barcha imkoniyatlaridan to'liq\n"
                   "foydalanish uchun iltimos ro'yxatdan o'ting.\n"
                   "<b>Ismingizni kiriting: </b>\n"
@@ -35,12 +44,12 @@ async def bot_start(message: types.Message):
 
     data_len = len(users.get_all(chat_id=chat_id))
 
-    if data_len == 4:
-        await message.answer('Siz ro`yxatda borsiz!')
+    if data_len >= 4:
+        await call.message.answer('Siz ro`yxatda borsiz!')
     else:
-        await message.answer(f"{pretty_txt}")
+        await call.message.answer(f"{pretty_txt}")
         try:
-            users.insert_into(chat_id=message.chat.id)
+            users.insert_into(chat_id=chat_id)
         except Exception as e:
             logging.warning(f'{e}')
         # Username State start
