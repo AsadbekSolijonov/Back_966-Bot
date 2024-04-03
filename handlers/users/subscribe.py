@@ -2,6 +2,9 @@ from aiogram import types
 from loader import dp
 from utils.db_api.db import UsersFunctionality
 from keyboards.inline.keyboard import confirm
+from handlers.users.translater import Translater
+
+trr = Translater()
 
 users = UsersFunctionality()
 CHAT_IDS = None
@@ -9,8 +12,10 @@ CHAT_IDS = None
 
 @dp.message_handler(commands=['obunachilar'])
 async def subscribe(message: types.Message):
+    chat_id = message.chat.id
     followers = users.get_followers_count()
-    await message.answer(f'Obunachilar soni {followers} ta.')
+    datas = trr.get_data_by_language(chat_id=chat_id)
+    await message.answer(datas.get('followers_count').format(followers))
 
 
 @dp.message_handler(commands=['followers'])

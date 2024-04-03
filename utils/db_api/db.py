@@ -97,7 +97,7 @@ class UsersFunctionality(CreateUsers):
         SELECT language FROM users WHERE chat_id={chat_id}"""
         data = self.curr.execute(query).fetchone()
 
-        return data[0] if data else None
+        return data[0] if data else 'uz'
 
 
 if __name__ == "__main__":

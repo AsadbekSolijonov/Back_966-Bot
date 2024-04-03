@@ -1,0 +1,8 @@
+{
+  "hello": "Hello",
+  "select_language": "Select language",
+  "enter_name": "Please register to take full advantage of the bot. \nEnter your name: \nFor example: Asadbek Solijonov",
+  "already_exists": "You have already registered!",
+  "command_start": "The bot has started.",
+  "followers_count": "The number of subscribers is {}."
+}

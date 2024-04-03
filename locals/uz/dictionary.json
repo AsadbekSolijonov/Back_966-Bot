@@ -1,0 +1,8 @@
+{
+  "hello": "Salom",
+  "select_language": "Tilni tanlang",
+  "enter_name": "Botni barcha imkoniyatlaridan to'liq\nfoydalanish uchun iltimos ro'yxatdan o'ting.\n<b>Ismingizni kiriting: </b>\n<i>Malasan: <strike>Asadbek Solijonov</strike></i>",
+  "already_exists": "Siz ro`yxatda borsiz!",
+  "command_start": "Bot ishga tushdi.",
+  "followers_count": "Obunachilar soni {} ta."
+}
